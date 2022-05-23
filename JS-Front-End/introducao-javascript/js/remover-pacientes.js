@@ -8,7 +8,13 @@ pacietes.forEach(function(paciente){
     paciente.addEventListener('dblclick', function(event){ // arrow function n funcionou?
         let alvo = event.target;
         let paiDoAlvo = alvo.parentNode; // TR  
-        paiDoAlvo.remove();
+        paiDoAlvo.classList.add('fadeOut'); // para adicionar classe não precisa do ponto
+
+        setTimeout(() => { // arrow funciton para esperar
+            paiDoAlvo.remove();
+            
+        }, 500); //aceita o tempo em milesegundos.
+
 
         //this.remove(); por estar pegando o pai, nao poderemos usar o this, pois se não iria apagara  tabela inteira
     });
