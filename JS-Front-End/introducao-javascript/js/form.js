@@ -37,15 +37,25 @@ botaoAdicionar.addEventListener('click',function (event){
    
    // Cria tr
    let pacienteTr = montaTr(paciente);
-   console.log(pacienteTr)
    
+    
+    let erros = validaPaciente(paciente); // vamos fazer uma validação com base em erro, a valida paciente retorna ou string vazia se deu certo ou uma string com a mensagem de erro que então é mais que 0 caracteres
+    console.log(erros)
+
+    if(erros.length > 0){ // aqui ela fez uma verificaão da quantidade de caracteres na variavel.
+       //vamos extrair para uma funcao 
+       exibeMensagensDeErro(erros);
+
+       return; // com esse return ele não vai terminar a funcao
+   } 
 
     let tabela = document.querySelector("#tabela-pacientes")
 
     tabela.appendChild(pacienteTr);
 
-    formulario.reset()// essa funcao eu não conhecia, aparentemente serve apenas para formularios.
 
+    formulario.reset()// essa funcao eu não conhecia, aparentemente serve apenas para formularios.
+    document.querySelector("#mensagens-erro").innerHTML ='';
 });
 
 
@@ -84,4 +94,44 @@ function montaTd(dado, classe){ // Dado vai ser o paciente.nome/peso/altura...
     td.textContent = dado;
     td.classList.add(classe);
     return td;
+}
+
+// Validando paciente.
+
+function validaPaciente(paciente){
+    // para retornar erros vamos criar um array e depois vamos verificar pore ele.
+
+    let erros = [];
+    if(paciente.nome.length == 0) erros.push('Nome invalido!');
+    if(!validaPeso(paciente.peso)) erros.push("Peso é invalido!");// if vazio é feio, mas else não, então alteramos a logica, if simples não precisa colocar chaves.     
+    if(!validaAltura(paciente.altura)) erros.push('Altura é invalida!');   
+    if(paciente.gordura.length == 0) erros.push('Gordura invalida!');
+    if(paciente.peso.length == 0) erros.push('Peso não pode estar vazio');
+    if(paciente.altura.length == 0) erros.push('Altura não pode estar vazia');
+
+    return erros;
+}
+
+
+
+function exibeMensagensDeErro(erros){
+    let mensagenserro = document.querySelector("#mensagens-erro");
+    mensagenserro.innerHTML = ''; // limpando as ul 
+
+    erros.forEach(function(erro) {
+        let lierro = document.createElement('li');
+        lierro.textContent = erro;
+        mensagenserro.appendChild(lierro);
+    });
+
+
+    /*
+    Quase né kkkk
+    for(erro in erros){
+        lierro.textContent = erros[erro];
+        mensagenserro.appendChild(lierro)
+    }*/
+
+
+    
 }

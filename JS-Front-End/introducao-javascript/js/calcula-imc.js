@@ -14,11 +14,11 @@ for(var i= 0; i< pacientes.length;i++){
     var tdaltura = paciente.querySelector('.info-altura')
     var altura = tdaltura.textContent;
     var tdimc = paciente.querySelector('.info-imc') 
-    var pesoValido = true;
-    var alturaValida = true;
+    var pesoValido = validaPeso(peso);
+    var alturaValida = validaAltura(altura);
 
     // Verificação dos dados.
-    if(peso <= 0 || peso >= 400){
+    if(!pesoValido){
         console.log('peso invalido fera')
         pesoValido = false;
         tdimc.textContent = 'Peso invalido'
@@ -28,7 +28,7 @@ for(var i= 0; i< pacientes.length;i++){
         // tudo que é interação fica no JS.
         //paciente.style.backgroundColor = 'red'; // styles com duas palavras, usar o padrão camelcase para funcionar.
     }
-    if(altura <= 0 || altura >= 3.00){
+    if(!alturaValida){
         console.log('altura invalida fera')
         alturaValida = false;
         tdimc.textContent = 'Altura invalida'
@@ -56,4 +56,21 @@ function calculaImc(peso, altura){
     imc = peso / (altura * altura);
     return imc.toFixed(2);
 
+}
+
+function validaPeso(peso){
+    if(peso >=0 && peso <= 1000){
+        return true;
+    } else{
+        return false;
+    }
+}
+
+function validaAltura(altura){
+    if(altura >= 0 && altura <= 3.0){
+        return true;
+    } else {
+        return false;
+    }
+        
 }
