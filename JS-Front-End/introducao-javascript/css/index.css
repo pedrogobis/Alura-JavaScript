@@ -138,7 +138,15 @@ button[disabled=disabled], button:disabled {
 }
 
 #mensagens-erro{
-	color: lightcoral;
+	color: rgb(141, 25, 25);
+	font-size: 3rem;
+	font-weight: 700;
+}
+
+.mensagens-erro{
+	color: rgb(141, 25, 25);
+	font-size: 1.25rem;
+	font-weight: 700;
 }
 
 .fadeOut{
