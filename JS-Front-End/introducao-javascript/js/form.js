@@ -36,27 +36,32 @@ botaoAdicionar.addEventListener('click',function (event){
    // selecionando a tabela que vai receber os dados
    
    // Cria tr
-   let pacienteTr = montaTr(paciente);
    
+   
+
+   let erros = validaPaciente(paciente); // vamos fazer uma validação com base em erro, a valida paciente retorna ou string vazia se deu certo ou uma string com a mensagem de erro que então é mais que 0 caracteres
+   console.log(erros)
+   
+   if(erros.length > 0){ // aqui ela fez uma verificaão da quantidade de caracteres na variavel.
+    //vamos extrair para uma funcao 
+    exibeMensagensDeErro(erros);
     
-    let erros = validaPaciente(paciente); // vamos fazer uma validação com base em erro, a valida paciente retorna ou string vazia se deu certo ou uma string com a mensagem de erro que então é mais que 0 caracteres
-    console.log(erros)
+    return; // com esse return ele não vai terminar a funcao
+} 
 
-    if(erros.length > 0){ // aqui ela fez uma verificaão da quantidade de caracteres na variavel.
-       //vamos extrair para uma funcao 
-       exibeMensagensDeErro(erros);
-
-       return; // com esse return ele não vai terminar a funcao
-   } 
-
-    let tabela = document.querySelector("#tabela-pacientes")
-
-    tabela.appendChild(pacienteTr);
-
+    adicionaPacienteNaTabela(paciente)
 
     formulario.reset()// essa funcao eu não conhecia, aparentemente serve apenas para formularios.
     document.querySelector("#mensagens-erro").innerHTML ='';
 });
+
+// vamos criar uma função adiciona paciente.
+function adicionaPacienteNaTabela(paciente){
+    // pegou as variaveis e atividades que já estavam na função de cima, e criou uma função separada, que vai poder ser chamada em outros arquivos.
+    let pacienteTr = montaTr(paciente);
+    let tabela = document.querySelector("#tabela-pacientes")
+    tabela.appendChild(pacienteTr);
+}
 
 
 function obtemPacienteDoFormulario(formulario){
