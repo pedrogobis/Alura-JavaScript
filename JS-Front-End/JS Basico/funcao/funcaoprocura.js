@@ -5,6 +5,16 @@ let alunosEMedias = [alunos, mediasDosAlunos];
 
 
 // arrow function
+
+/*
+includes, verifica se tem o que vc quer dentro do array, porém serve apenas para verificação pois ele retorna apenas = true or false
+indexOf, verifica se o que vc quer está dentro do array, e retorna o numero do indice de onde está o que voce quer = retorna indice(se não existir retorna o -1.)
+
+console.log(alunos.indexOf('marta'))
+*/
+
+
+
 const exibeNomeDoAluno = (nomeDoAluno) =>{
     if(alunosEMedias[0].includes(nomeDoAluno)){
         indice = alunosEMedias[0].indexOf(nomeDoAluno)
@@ -39,4 +49,4 @@ function mediasDosAlunosverifica(tabela,nomeAluno){
 } 
 
 
-console.log(exibeNomeDoAluno2(alunosEMedias,'marcelo'))
+//console.log(exibeNomeDoAluno2(alunosEMedias,'marcelo'))
