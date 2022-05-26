@@ -8,6 +8,8 @@ alunos.splice(14,2,'RODRIGO','ANA BEATRIZ')
 
 // Podemos inserir itens no indece desejado se não colocarmos nda a ser substituido. 
 alunos.splice(3,0, 'MATHEUS')
-alunos.sort()
+//alunos.sort()
 console.log(alunos.length)
 console.log(`Alunos atuais ${alunos}`)
+alunos.push('PAULO','MIGUEL')
+console.log(alunos)
