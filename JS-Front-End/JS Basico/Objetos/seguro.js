@@ -37,6 +37,7 @@ sacar: function(valor){
 // meio obvio se levar em consideração o nome de como usamos...
 
 const propsClientes = Object.keys(cliente);
+const valoresdosClientes = Object.values(cliente); // retorna os valores de tudo, até os objetos dentro do arrays.
 //console.log(propsClientes)
 
 function  oferecerSeguro(obj){
@@ -46,7 +47,8 @@ function  oferecerSeguro(obj){
     } return 'Dia ta lindo né?'
 }
 
-console.log(oferecerSeguro(cliente))
+//console.log(oferecerSeguro(cliente))
+console.log(valoresdosClientes)
 /*
 Meu jeito deu certo, porém na aula vai ser introduzido um novo jeito.
 
