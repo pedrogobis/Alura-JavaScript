@@ -19,4 +19,4 @@ console.log(cliente.dependentes)
 cliente.dependentes.datanascimento = '08/03/2015' // adicionando itens dentro do objeto dentro de outro objeto
 
 
-console.log(cliente.dependentes)
+console.log(cliente.dependentes.nome)

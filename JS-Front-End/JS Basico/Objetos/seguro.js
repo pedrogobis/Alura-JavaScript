@@ -37,7 +37,7 @@ sacar: function(valor){
 // meio obvio se levar em consideração o nome de como usamos...
 
 const propsClientes = Object.keys(cliente);
-const valoresdosClientes = Object.values(cliente); // retorna os valores de tudo, até os objetos dentro do arrays.
+const valoresdosClientes = Object.values(cliente.dependentes); // retorna os valores de tudo, até os objetos dentro do arrays.
 const tudoListasClientes = Object.entries(cliente); // retorna um array para cada chave e valor
 //console.log(propsClientes)
 
@@ -49,7 +49,7 @@ function  oferecerSeguro(obj){
 }
 
 //console.log(oferecerSeguro(cliente))
-console.log(tudoListasClientes);
+console.log(valoresdosClientes);
 /*
 Meu jeito deu certo, porém na aula vai ser introduzido um novo jeito.
 
