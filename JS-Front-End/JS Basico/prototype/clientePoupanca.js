@@ -31,3 +31,13 @@ clientePoupanca.prototype.depositaPoup = function(valor){
 
 otavio.depositaPoup(3000)
 console.log(otavio.saldoPoup)
+
+
+console.log(otavio.hasOwnProperty("saldoPoup"))
+console.log(otavio.hasOwnProperty("saldoPoup"))
+console.log(otavio instanceof criaCliente)
+console.log(typeof otavio)
+console.log(typeof otavio)
+console.log(otavio instanceof clientePoupanca)
+console.log(Function.prototype.isPrototypeOf(criaCliente))
+console.log(criaCliente.constructor === Function)
