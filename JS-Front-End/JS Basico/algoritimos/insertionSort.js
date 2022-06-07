@@ -1,18 +1,20 @@
 // inserindo antes corretamente.
 
 const livros = require('./listaLivros');
+const troca = require('./troca');
 
 function insertionSort(lista){
-    lista.forEach((item,indice) => {
-        let analise = indice;
-        while(lista[analise.preco] < lista[analise - 1].preco){ // tentei fazer esse menos um antes mas por algum motivo, de logica provavelmente não rolou
-            let itemAnalise = lista[indice]
-            let itemAnterior = lista[menor]
+    for (let atual =0; atual< lista.length; atual++) {
+        let analise = atual;
+        while(analise > 0 && lista[analise].preco < lista[analise - 1].preco){ 
+          
+            troca(lista, analise);
 
-            livros[indice] = livroMenorPreco;
-            livros[menor] = livroAtual
+            analise --
         }
-    });
+    };
     
     console.log(lista)
 }
+
+insertionSort(livros);
