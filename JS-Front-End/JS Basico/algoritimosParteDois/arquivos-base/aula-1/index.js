@@ -15,10 +15,22 @@ function juntaListas(lista1, lista2){
             posicaoatualLista1++;
         }else{ 
             listaFinal[atual] = produtoAtualLista2; 
-            posicaoatualLista2++;}
+            posicaoatualLista2++;
+        }
             atual++
     }
 
+    while(posicaoatualLista1 < lista1.lenght){
+        listaFinal[atual]= lista1[posicaoatualLista1];
+        posicaoatualLista1 ++;
+        atual ++;
+    }
+
+    while(posicaoatualLista2 < lista2.lenght){
+        listaFinal[atual]= lista2[posicaoatualLista2];
+        posicaoatualLista2 ++;
+        atual ++;
+    }
 
     return listaFinal;
 }
