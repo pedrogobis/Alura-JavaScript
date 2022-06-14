@@ -29,7 +29,7 @@ async function pegaArquivo(caminhoDoArquivo){
     const encoding = 'utf-8';
     try{
         const texto = await fs.promises.readFile(caminhoDoArquivo, encoding)// pegando o texto
-        return extraiLinks(texto) // se fosse sincrono era só deixar assim
+        console.log(extraiLinks(texto)) // se fosse sincrono era só deixar assim
 
     }catch(erro){
         trataErro(erro);
@@ -39,5 +39,7 @@ async function pegaArquivo(caminhoDoArquivo){
 
 
 }
+
+console.log(pegaArquivo(caminho))
 
 export {pegaArquivo, trataErro}
