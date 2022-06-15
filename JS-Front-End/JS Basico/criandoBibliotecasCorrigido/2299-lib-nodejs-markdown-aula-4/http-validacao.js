@@ -1,13 +1,22 @@
 const fetch = require('node-fetch');
 
+function manejaErros(erro){
+    throw new Error(erro.message);
+}
+
 async function checaStatus(arrayUrls){
-    const arraryStatus = await Promise.
-    all(arrayUrls
-        .map(async url => {
-            const res = await fetch(url);
-            return res.status
-    }))
-    return arraryStatus;
+    try{
+        const arraryStatus = await Promise.
+        all(arrayUrls
+            .map(async url => {
+                const res = await fetch(url);
+                return res.status
+        }))
+
+        return arraryStatus;
+    }catch(erro){
+        manejaErros(erro)
+    }
 }
 
 function geraArrayDeURLs(arraydelinks){
@@ -21,7 +30,12 @@ function geraArrayDeURLs(arraydelinks){
 function validaURLs(arraydelinks){
     const links = geraArrayDeURLs(arraydelinks) // todas as funcoes só devem retornar, apenas a principal que mostra no console.
     const statusLinks = await checaStatus(links);
-    return statusLinks
+    
+    // spread operator, abre o objeto e adiciona
+    const resultados = arraydelinks.map((objeto, indice) => ({
+        ...objeto, status: statusLinks[indice]
+    }))
+    return resultados
 }
 
 module.exports = validaURLs;
