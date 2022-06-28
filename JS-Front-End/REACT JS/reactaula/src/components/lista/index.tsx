@@ -1,24 +1,14 @@
 import React from "react";
+import { ITarefa } from "../../types/tarefas";
 import Item from "./item";
 import style from './Lista.module.scss';
 
-function Lista(){
-    const [tarefas, setTarefas] =  React.useState([{
-        tarefa: 'React',
-        tempo: '02:00:00'
-    },{
-        tarefa: 'Javascript',
-        tempo: '01:00:00'
-    },{
-        tarefa:'Typescript',
-        tempo: '03:00:01'
-    }])
+
+function Lista({ tarefas }: { tarefas: ITarefa[] }){
+    
     return(
         <aside className={style.listaTarefas}>
-            <h2 onClick={()=> {
-                console.log("h2 clicado", tarefas)
-                setTarefas([...tarefas,{tarefa: "estudar estado", tempo:"05:00:00" }])
-                }}>Estudos do dia</h2>
+            <h2>Estudos do dia</h2>
             <ul>
                 {tarefas.map((item, index) => (
                     // retirarmos as funções direto no li, e exportamos para um arquivo externo
