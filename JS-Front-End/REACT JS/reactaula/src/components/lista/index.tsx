@@ -3,17 +3,22 @@ import { ITarefa } from "../../types/tarefas";
 import Item from "./item";
 import style from './Lista.module.scss';
 
+interface Props{
+    tarefas: ITarefa[],
+    selecionaTarefa:(tarefaSelecionada: ITarefa)=> void
+}
 
-function Lista({ tarefas }: { tarefas: ITarefa[] }){
+function Lista({ tarefas, selecionaTarefa }: Props ){
     
     return(
         <aside className={style.listaTarefas}>
             <h2>Estudos do dia</h2>
             <ul>
-                {tarefas.map((item, index) => (
+                {tarefas.map((item) => (
                     // retirarmos as funções direto no li, e exportamos para um arquivo externo
                     <Item
-                    key={index} // tipamos ele fora da funcao
+                    selecionaTarefa ={selecionaTarefa}
+                    key={item.id} // tipamos ele fora da funcao
                     {...item}// desistruturando automaticamente. não funciona em todos os casos, pode dar problemas dependendo o projeto.
                     
                     /*
