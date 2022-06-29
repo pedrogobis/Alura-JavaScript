@@ -1,8 +1,30 @@
 import React from "react";
 import style from './Botao.module.scss';
 
-class Botao extends React.Component <{
-    children?: React.ReactNode, type?: "button"| "submit" | "reset" | undefined 
+
+interface Props{
+    children?: React.ReactNode, 
+    type?: "button"| "submit" | "reset" | undefined ,
+    onClick?: () => void
+}
+
+function Botao({onClick, type, children }: Props){
+    return(
+        // retorna um html
+        //no onclick precisamos fazer links bind entre eles
+        <button onClick={onClick} type={type} className={style.botao}>
+            {children}
+        </button>
+    )
+}
+/*
+
+Vamos refatorar isso
+
+class Botao1 extends React.Component <{
+    children?: React.ReactNode, 
+    type?: "button"| "submit" | "reset" | undefined ,
+    onClick?: () => void
 }>{
     
     render() { // jsx
@@ -11,14 +33,15 @@ class Botao extends React.Component <{
            // backgroundColor: estaAtivo ? "green" : "red"
             
         //}
-        const {type = "button"} = this.props;
+        const {type = "button", onClick} = this.props;
         return(
             // retorna um html
-            <button type={type} className={style.botao}>
+            //no onclick precisamos fazer links bind entre eles
+            <button onClick={onClick} type={type} className={style.botao}>
                 {this.props.children}
             </button>
         )
     }
-}
+}*/
 
 export default Botao;
