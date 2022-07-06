@@ -9,6 +9,7 @@ interface Props{
     setOrdenador: React.Dispatch<React.SetStateAction<string>>;
 }
 
+
 export default function Ordenador({ordenador, setOrdenador}: Props){
     const [aberto, setAberto] = useState(false);
     const nomeOrdenador = ordenador && opcoes.find(opcao => opcao.value === ordenador)?.nome
