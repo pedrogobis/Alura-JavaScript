@@ -1,6 +1,6 @@
 import styles from './NotFound.module.scss'
 import stylesTema from 'styles/Tema.module.scss'
-import { ReactComponent as NotFound} from 'assets/not_found.svg'
+import { ReactComponent as NotFoundImage} from 'assets/not_found.svg'
 import classNames from 'classnames'
 import { useNavigate} from 'react-router-dom'
 
@@ -17,7 +17,7 @@ export default function NotFoud(){
 					}}>
 						{'< Voltar'}
 					</button>
-            <NotFoud/>
+            <NotFoundImage/>
         </div>
     )
 }
