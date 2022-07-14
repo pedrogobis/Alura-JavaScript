@@ -1,6 +1,7 @@
 import { Button, TextField, Typography, Box,  Container, Paper } from "@mui/material"
-import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import React, { useEffect, useState, SyntheticEvent } from "react"
+import { useParams, useNavigate } from "react-router-dom"
+import { Method } from "axios"
 import http from "../../../http"
 import IRestaurante from "../../../interfaces/IRestaurante"
 
@@ -8,6 +9,9 @@ import IRestaurante from "../../../interfaces/IRestaurante"
 const FormularioRestaurante = () => {
 
     const parametros = useParams()
+   
+    const navigate = useNavigate()
+
     useEffect(() => {
         if (parametros.id) {
             http.get<IRestaurante>(`restaurantes/${parametros.id}/`)
@@ -18,28 +22,25 @@ const FormularioRestaurante = () => {
 
     const [nomeRestaurante, setNomeRestaurante] = useState('')
 
-    const aoSubmeterForm = (evento: React.FormEvent<HTMLFormElement>) => {
+    const aoSubmeterForm = (evento: SyntheticEvent) => {
         evento.preventDefault()
-
+        let url = '/v2/restaurantes/'
+        let method: Method = 'POST'
         if (parametros.id) {
-            http.put(`restaurantes/${parametros.id}/`, {
-                nome: nomeRestaurante
-            })
-                .then(() => {
-                    alert('Restaurante atualizado com sucesso')
-                })
-
-        } else {
-            http.post('restaurantes/', {
-                nome: nomeRestaurante
-            })
-                .then(() => {
-                    alert('Restaurante cadastrado com sucesso')
-                })
-
+          method = 'PUT'
+          url += `${parametros.id}/`
         }
-
-    }
+        http.request({
+          url,
+          method,
+          data: {
+            nomeRestaurante
+          }
+        }).then(() => {
+          navigate('/dashboard/restaurantes')
+        })    
+      }
+    
 
     return (
 
