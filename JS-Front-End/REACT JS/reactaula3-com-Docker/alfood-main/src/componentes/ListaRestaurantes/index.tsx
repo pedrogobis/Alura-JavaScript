@@ -49,12 +49,12 @@ const ListaRestaurantes = () => {
     if (ordenacao) {
       opcoes.params.ordering = ordenacao
     }
-    carregarDados('http://localhost:8000/api/v1/restaurantes/', opcoes)
+    carregarDados('http://192.168.0.111:8000/api/v1/restaurantes/', opcoes)
   }
 
   useEffect(() => {
     // obter restaurantes
-    carregarDados('http://localhost:8000/api/v1/restaurantes/')
+    carregarDados('http://192.168.0.111:8000/api/v1/restaurantes/')
   }, [])
 
   return (<section className={style.ListaRestaurantes}>

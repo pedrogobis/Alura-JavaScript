@@ -13,7 +13,7 @@ interface RestauranteProps {
 const Restaurante = ({ restaurante }: RestauranteProps) => {
   const [pratos, setPratos] = useState<IPrato[]>()
   useEffect(() => {
-    axios.get<IPrato[]>(`http://localhost:8000/api/v1/restaurantes/${restaurante.id}/pratos/`)
+    axios.get<IPrato[]>(`http://192.168.0.111:8000/api/v1/restaurantes/${restaurante.id}/pratos/`)
       .then(resposta => {
         setPratos(resposta.data)
       })
