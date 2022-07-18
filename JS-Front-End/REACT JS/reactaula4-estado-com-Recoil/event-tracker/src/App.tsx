@@ -36,13 +36,13 @@ function App() {
 
     // setEventos([...eventos])
   }
-  const alterarStatusEvento = (id: number) => {
-    // const evento = eventos.find(evento => evento.id === id)
-    //   if (evento) {
-    //     evento.completo = !evento.completo
-    //   }
-    //   setEventos([...eventos])
-    }
+  // const alterarStatusEvento = (id: number) => {
+  //   // const evento = eventos.find(evento => evento.id === id)
+  //   //   if (evento) {
+  //   //     evento.completo = !evento.completo
+  //   //   }
+  //   //   setEventos([...eventos])
+  //   }
     // const deletarEvento = (id: number) => {
     //   //   setEventos([...eventos.filter(evento => evento.id !== id)])
     // }
@@ -68,7 +68,7 @@ function App() {
             <Card>
               <ListaDeEventos 
                 aoFiltroAplicado={aplicarFiltro}
-                aoAlterarStatus={alterarStatusEvento}
+                
                 
               />
             </Card>
