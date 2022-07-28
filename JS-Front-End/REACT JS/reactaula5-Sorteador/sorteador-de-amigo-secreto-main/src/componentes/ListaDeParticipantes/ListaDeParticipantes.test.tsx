@@ -10,41 +10,31 @@ jest.mock('../../state/hook/useListaDeParticipantes', () =>{
     }
 })
 
-
-describe('Uma lista vazia de participantes', () => {
-    
-    beforeEach(() =>{
+describe('uma lista vazia de participantes', () => {
+    beforeEach(() => {
         (useListaDeParticipantes as jest.Mock).mockReturnValue([])
     })
-
-    test('deve ser renderizada sem elementos.', () => {
-        render(
-            <RecoilRoot>
-                <ListaParticipantes />
-            </RecoilRoot>
-        )
-        const itens = screen.queryAllByRole('listaitem')
+    test('deve ser renderizada sem elementos', () => {
+        render(<RecoilRoot>
+            <ListaParticipantes />
+        </RecoilRoot>)
+    
+        const itens = screen.queryAllByRole('listitem')
         expect(itens).toHaveLength(0)
-    }
-    )
+    })
 })
 
-describe('Uma lista preenchida de participantes', () => {
-    
-    const participantes: string[] = ['Maria', 'Michel']
-
-    beforeEach(() =>{
+describe('uma lista preenchida de participantes', () => {
+    const participantes = ['Ana', 'Catarina']
+    beforeEach(() => {
         (useListaDeParticipantes as jest.Mock).mockReturnValue(participantes)
     })
-
-    test('deve ser renderizada com elementos.', () => {
-        render(
-            <RecoilRoot>
-                <ListaParticipantes />
-            </RecoilRoot>
-        )
-        const itens = screen.queryAllByRole('listaitem')
-        expect(itens).toHaveLength(!0)
-    }
-    )
+    test('deve ser renderizada sem elementos', () => {
+        render(<RecoilRoot>
+            <ListaParticipantes />
+        </RecoilRoot>)
+    
+        const itens = screen.queryAllByRole('listitem')
+        expect(itens).toHaveLength(participantes.length)
+    })
 })
